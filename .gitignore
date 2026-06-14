@@ -1,0 +1,10 @@
+.env
+node_modules/
+venv/
+.venv/
+__pycache__/
+uploads/
+reports/
+*.mp4
+*.mov
+*.avi
