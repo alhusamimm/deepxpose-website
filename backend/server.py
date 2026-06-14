@@ -15,6 +15,13 @@ import json
 import shutil
 import tempfile
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
 # Import emergent integrations
 # from emergentintegrations.llm.chat import LlmChat, UserMessage, FileContentWithMimeType
 
@@ -480,12 +487,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
