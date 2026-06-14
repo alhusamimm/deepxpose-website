@@ -16,7 +16,7 @@ import shutil
 import tempfile
 
 # Import emergent integrations
-from emergentintegrations.llm.chat import LlmChat, UserMessage, FileContentWithMimeType
+# from emergentintegrations.llm.chat import LlmChat, UserMessage, FileContentWithMimeType
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -195,12 +195,7 @@ class AIDetectionService:
         start_time = datetime.now(timezone.utc)
         
         try:
-            if self.api_key and video_url:
-                # Use real AI analysis for video URLs
-                result = await self._analyze_with_ai(video_id, video_url)
-            else:
-                # Use mock analysis
-                result = await self._mock_analyze_video(video_id)
+            result = await self._mock_analyze_video(video_id)
                 
             processing_time = (datetime.now(timezone.utc) - start_time).total_seconds()
             result.processing_time = f"{processing_time:.1f}s"
